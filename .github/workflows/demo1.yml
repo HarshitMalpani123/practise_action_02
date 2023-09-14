@@ -2,9 +2,16 @@ name: Events Demo 1
 on: 
   pull_request:
     types: #[opened,edited] also works well 
-      - opened
+      - opened #different types of activity types are supported by event trigger
       # - edited here we are specifing the activity types
+    branches: #only push to the main branch will trigger this workflow
+      - main
   workflow_dispatch: 
+  push:
+    branches: #only push to the main branch will trigger this workflow
+      - main
+    paths-ignore:
+      - '.github/workflows/*'
 jobs:
   deploy:
     runs-on: ubuntu-latest
